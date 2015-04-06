@@ -1,25 +1,37 @@
-#SmartHerd 28
-
-module MyClasses
-
-  MYCONST="Alexandre"
-
-  def MyClasses.just_a_method
-    puts "just a method inside a module"
-  end
-  class ClassInsideModule
-    def initialize
-      puts "#{self.class} is initialized."
-    end
-
-    def mymethod
-      puts "user defined method"
-    end
+module Perimeter
+  def perimeter
+    sides.inject(0) { |sum, side| sum + side }
   end
 end
 
-obj = MyClasses::ClassInsideModule.new
-obj.mymethod
+class Rectangle
+  # Your code here
+  include Perimeter
 
-MyClasses.just_a_method
-puts MyClasses::MYCONST.upcase
+  def initialize(length, breadth)
+    @length = length
+    @breadth = breadth
+  end
+
+  def sides
+    [@length, @breadth, @length, @breadth]
+  end
+end
+
+class Square
+  # Your code here
+  include Perimeter
+
+  def initialize(side)
+    @side = side
+  end
+
+  def sides
+    [@side, @side, @side, @side]
+  end
+end
+
+s = Square.new(10)
+r = Rectangle.new(10,5)
+puts s.perimeter
+puts r.perimeter

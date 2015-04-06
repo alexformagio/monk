@@ -1,20 +1,29 @@
-#SmartHerd 27
+module Warmup
 
-module Trig
-  PI = 3.14
-
-  def Trig.sinfunc(x)
-    puts Math.sin(x)
-  end
-
-  def Trig.cosfunc(x)
-    puts Math.cos(x)
-  end  
+def push_ups
+  puts "Phew, I need a break!"
+end
 
 end
 
-puts Trig::PI
-Trig::sinfunc(3)
-Trig::cosfunc(3)
-Trig.sinfunc(3)
-Trig.cosfunc(3)
+class Gym
+  include Warmup
+
+  def preacher_curls
+    puts "I am building biceps."
+  end
+end
+
+class Dojo
+  include Warmup
+
+  def tay_kyo_kyu
+    puts "Look at my instance."
+  end
+end
+
+puts Gym.new.push_ups
+puts Dojo.new.push_ups
+puts Warmup.class
+puts Class.superclass
+puts Module.superclass
